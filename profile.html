@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Hồ Sơ của {{ user.username }}</h2>
+<p>Email: {{ user.email }}</p>
+<h3>Bài Viết của {{ user.username }}</h3>
+<ul>
+    {% for post in posts %}
+    <li>
+        <a href="{{ url_for('view_post', post_id=post.id) }}">{{ post.title }}</a>
+        <small>Được viết vào {{ post.created_at.strftime('%Y-%m-%d') }}</small>
+        <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST" style="display:inline;">
+            <button type="submit">Xóa</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Tạo Bài Viết Mới</h2>
+<form action="{{ url_for('create_post') }}" method="POST">
+    <input type="text" name="title" placeholder="Tiêu đề" required>
+    <textarea name="content" placeholder="Nội dung" required></textarea>
+    <button type="submit">Đăng Bài</button>
+</form>
+{% endblock %}
